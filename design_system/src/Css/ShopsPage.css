@@ -1,0 +1,59 @@
+/* .container{
+    border: 1px;
+    padding: 1%;
+}
+
+.title{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    margin-bottom: -40px;
+}
+.body{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
+    justify-content: center;
+} */
+
+.wholeContainer {
+  height: 20vh;
+  min-height: 127px;
+  max-height: 254px;
+  
+  }
+  
+  .container2 {
+    display: flex;
+    border: 1px solid;
+    margin-top: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .content1,
+  .content2,
+  .content3 {
+    flex: 1;
+    border: 1px solid;
+    margin: 1%;
+    padding: 2%;
+    max-width: calc(33.33% - 4%);
+    box-sizing: border-box;
+    word-wrap: break-word;
+    min-width: 100px;
+  }
+  
+  .boxContainer {
+    border: 1px solid;
+    margin: 1%;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    min-width: 100px;
+  }
+  
+  
