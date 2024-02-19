@@ -1,0 +1,80 @@
+.wholeConShops{
+    min-height: 100vh;
+}
+
+.navigation{
+    outline: 2px solid;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: left;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(247, 241, 239);
+}
+
+.nav1{
+   margin-right: 40px;
+   font-size: 24px;
+   text-decoration: none;
+}
+
+.nav2{
+    margin-right: 40px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.nav3{
+    margin-right: 40px;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.headerShops{
+    display: flex;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+}
+
+.bodyShops{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; 
+}
+
+.buttonShops {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    margin: 0 auto; 
+    margin-top: 1%;
+}
+
+.labelShops{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+}
+
+.labelShops1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: x-large;
+    margin-left: -2px;
+}
+
+.inputShops1{
+    margin-left: 43px;
+}
+
+.inputShops2{
+
+}
+
+
+
+

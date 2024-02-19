@@ -4,8 +4,11 @@ import TextField from '@mui/material/TextField';
 import { DataGrid } from '@mui/x-data-grid';
 import { rows } from './MockData';
 import '../Css/ShopsPage.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { MenuItem, Select } from '@mui/material';
 
-export default function PresentationLayer() {
+
+export default function ShopsPage() {
 
   const showLoaderForOneSecond = () => {
     const loader = document.getElementById('loader');
@@ -19,26 +22,38 @@ export default function PresentationLayer() {
 
   return (
     <div className='wholeContainer'>
-      <Box sx={{ padding: '20px' }}>
+      <div className='navigation'>
+            <div className='nav1'><Link to = "/AddShops">ADD PRODUCTS</Link></div>
+            <div className='nav2'><Link to = "/AddInventories">ADD INVENTORIES</Link></div>
+            <div className='nav3'><Link to = "/AddProducts">ADD PRODUCTS</Link></div>
+      </div>
+
         <Box sx={{ display: 'flex', padding: '10px' }}>
-          <TextField
+          <Select
             id="searchShop"
             label="Search for shop"
             fullWidth
-          ></TextField>
-          <TextField
+            sx = {{marginRight : '10px'}}
+          >
+          <MenuItem value = {1}>shop 1</MenuItem>
+          <MenuItem value = {2}>shop 2</MenuItem>
+          <MenuItem value = {3}>shop 3</MenuItem>
+          </Select>
+
+          <Select
             id="searchInventory"
             label="Select for inventory"
             fullWidth
-            sx={{ marginLeft: '10px' }}
-          ></TextField>
+            sx={{ marginRight: '10px' }}
+          >
+          <MenuItem value = {1}>inventory 1</MenuItem>
+          <MenuItem value = {2}>inventory 2</MenuItem>
+          <MenuItem value = {3}>inventory 3</MenuItem>  
+          </Select>
+          <button style={{padding: '10px 20px', borderRadius: '7px'}}>SEARCH</button>
         </Box>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
-          <button style={{ padding: '10px 20px', borderRadius: '7px' }} onClick={showLoaderForOneSecond}>Submit</button>
-        </Box>
         <div  id="loader" style={{ display: 'none' }}>Loading...</div>
-
 
         <div className='boxContainer'>
           <Box sx={{ marginTop: '30px', overflowX: 'auto' }}>
@@ -55,27 +70,16 @@ export default function PresentationLayer() {
           </Box>
         </div>
 
+        {/* <div className='container'>
+            <button className='button1' onClick={handleAddShopsClick}>ADD SHOPS</button>
+            <button className='button2' onClick={handleAddInventoriesClick}>ADD INVENTORY</button>
+            <button className='button3' onClick={handleAddProductsClick}>ADD PRODUCTS</button>
+        </div> */}
 
-        <div className='container2'>
-          <div className='content1'>
-            <p>
-              sabgfvervgufcwebFUGWBEUFVBGERJKSBVFGREJGBUSJKSJKFFVBJKJERV KJERAGVBRER FUERGFUYEBRVKRV
-            </p>
-          </div>
-          <div className='content2'>
-            <p>
-              FHWEAIUFGEWHIFUEWGFUY GUIGFWUEYGYDHWEUIWGFEUHWIOAEUGFWOIUEFHIWUE FIUWEGFYUGWIEUFG IWUEGFWUIEYGIWUEFHIWUAEGHWIUERGFWIEUFHWIEUFGWIEUFHCGWIUE
-            </p>
-          </div>
-          <div className='content3'>
-            <p>
-              FHWEAIUFGEWHIFUEWGFUY GUIGFWUEYGYDHWEUIWGFEUHWIOAEUGFWOIUEFHIWUE FIUWEGFYUGWIEUFG IWUEGFWUIEYGIWUEFHIWUAEGHWIUERGFWIEUFHWIEUFGWIEUFHCGWIUE DFEDDFBHEUF
-              FEWUGEWFUYGGWEUFWEGFRVFERGERBERVERKUFBHVIEURLGHUIERHFOIESJFOIRHHHHHS;EFJCCCCCCCCCCCCCCCCCCCCCCCCCCCSLIDKFMGHELCOIWE
-            </p>
-          </div>
+        <div className='responseData'>
+          
         </div>
 
-      </Box>
     </div>
   );
 }
