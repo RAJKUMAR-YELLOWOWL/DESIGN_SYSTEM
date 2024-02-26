@@ -5,21 +5,19 @@ import { useState } from "react";
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
 
-
-function AddShops() {
+function AddProducts() {
 
     const navigation = useNavigate();
-    const [showAlert, setShowAlert] = useState(false);
+    const[showAlert,setShowAlert] = useState(false)
 
-    const handleNavigation = () => {
+    const handleAlert = () =>{
         setShowAlert(true);
-        setTimeout(() => {
+        setTimeout(()=>{
             setShowAlert(false);
-            navigation('/AddInventories');
-        }, 2000);
+        },2000)
     }
 
-    const wholeConShops: SxProps<Theme> = {
+    const wholeConProducts: SxProps<Theme> = {
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
@@ -30,7 +28,7 @@ function AddShops() {
         minWidth: '800px',
     }
 
-    const headerShops: SxProps<Theme> = {
+    const headerProducts: SxProps<Theme> = {
         display: 'flex',
         justifyContent: 'center',
         fontFamily: 'Times New Roman, Times, serif',
@@ -40,14 +38,14 @@ function AddShops() {
 
     const container: SxProps<Theme> = {
         display: 'flex',
-        width: '700px',
+        width: '800px',
         flex:1,
         flexDirection: 'column',
         justifyContent:'center',
         marginTop:-20,
     }
 
-    const bodyShops: SxProps<Theme> = {
+    const bodyProducts: SxProps<Theme> = {
         display: 'flex',
         flexDirection: 'row',
     }
@@ -68,39 +66,39 @@ function AddShops() {
 
     const inputStyle = {
         minWidth: '300px',
-        minHeight: '27px' 
-    };
+        minHeight: '27px', 
+    }
 
-    const inputStyleShops = {
+    const inputStyleShopsInven = {
         minWidth: '310px',
         minHeight: '27px' 
-    };
+    }
 
-    const shopDetails: SxProps<Theme> = {
-        marginTop:'13px',
+    const productDetails: SxProps<Theme> = {
+        marginTop:'20px',
         marginLeft:'20px',
         fontFamily:'TimesNewRoman',
         display:'flex',
         flexDirection:'column',
-        maxWidth:'650px',
+        maxWidth:'700px',
         backgroundColor:'lightgreen',
         border:'1px',
         borderRadius:'5px'
     }
 
-    const shopDetailsPart : SxProps<Theme> = {
+    const ProductDetailsPart : SxProps<Theme> = {
         display: 'flex',
         flexDirection: 'row',
     }
 
-    const shopDetails1: SxProps<Theme> = {
+    const productDetails1: SxProps<Theme> = {
         display:'flex',
         flex: 1,
         alignItems:'center',
-        fontSize: '25px',
+        fontSize: '25px'
     }
 
-    const shopDetails2: SxProps<Theme> = {
+    const productDetails2: SxProps<Theme> = {
         display:'flex',
         flex:1,
         alignItems:'center',
@@ -125,41 +123,46 @@ function AddShops() {
       }
 
     return (
-        <Box sx={wholeConShops}>
-            <Box sx={headerShops}>
-                <h2>HERE YOU CAN ADD THE SHOPS</h2>
+        <Box sx={wholeConProducts}>
+            <Box sx={headerProducts}>
+                <h2>HERE YOU CAN ADD THE PRODUCT</h2>
             </Box>
             <Box sx={container}>
-                <Box sx={bodyShops}>
+                <Box sx={bodyProducts}>
                     <Box sx={body1}><label>ENTER THE SHOP NAME      : </label></Box>
-                    <Box sx={body2}><input style={inputStyleShops}  placeholder="SHOP NAME" type='text'></input></Box><br /><br /><br /><br />
+                    <Box sx={body2}><input style = {inputStyleShopsInven} placeholder="SHOP NAME" type='text'></input></Box><br />
                 </Box>
-                <Box sx={bodyShops}>
-                    <Box sx={body1}>ENTER THE SHOPLOCATION </Box>
+                <Box sx={bodyProducts}>
+                    <Box sx={body1}><label>ENTER THE INVENTORY NAME  : </label></Box>
+                    <Box sx={body2}><input style = {inputStyleShopsInven} placeholder="INVENTORY NAME" type='text'></input></Box><br /><br /><br /><br />
                 </Box>
-                    <Box sx = {shopDetails}>
-                        <Box sx = {shopDetailsPart}>
-                            <Box sx={shopDetails1}><label>ENTER THE COUNTRY :</label></Box>
-                            <Box sx={shopDetails2}><input style={inputStyle} placeholder="COUNTRY" type='text'></input></Box><br /><br />
+                <Box sx={bodyProducts}>
+                    <Box sx={body1}>ENTER THE PRODUCT DETAILS </Box>
+                </Box>
+                    <Box sx = {productDetails}>
+                        <Box sx = {ProductDetailsPart}>
+                            <Box sx={productDetails1}><label>ENTER THE NAME :</label></Box>
+                            <Box sx={productDetails2}><input style={inputStyle} placeholder="COUNTRY" type='text'></input></Box><br /><br />
                         </Box >
-                        <Box sx = {shopDetailsPart}>
-                            <Box sx={shopDetails1}><label>ENTER THE STATE :</label></Box>
-                            <Box sx={shopDetails2}><input style={inputStyle} placeholder="STATE" type='text'></input></Box><br /><br />
+                        <Box sx = {ProductDetailsPart}>
+                            <Box sx={productDetails1}><label>ENTER THE QUANTITY :</label></Box>
+                            <Box sx={productDetails2}><input style={inputStyle} placeholder="STATE" type='text'></input></Box><br /><br />
                         </Box>
-                        <Box sx = {shopDetailsPart}>
-                            <Box sx={shopDetails1}><label>ENTER THE CITY :</label></Box>
-                            <Box sx={shopDetails2}><input style={inputStyle} placeholder="CITY" type='text'></input></Box><br /><br />
+                        <Box sx = {ProductDetailsPart}>
+                            <Box sx={productDetails1}><label>ENTER THE PRICE:</label></Box>
+                            <Box sx={productDetails2}><input style={inputStyle} placeholder="CITY" type='text'></input></Box><br /><br />
                         </Box>
                     </Box>
-                <Box sx = {submitButton}><Button onClick={handleNavigation} variant="contained">ADD SHOPS</Button></Box>
-                {showAlert &&
-                    <Box sx={alertStyle}>
-                        <Alert>
-                            SHOP ADDED SUCCESSFULLY
-                        </Alert>
-                    </Box>}
+                <Box sx = {submitButton}><Button onClick={handleAlert} variant="contained">ADD PRODUCT</Button></Box>
+                {showAlert && 
+                <Box>
+                   <Alert sx = {alertStyle}>
+                        PRODUCTS ADDED SUCCESSFULLY
+                   </Alert>
+                </Box>
+                }
             </Box>
         </Box>
     )
 }
-export default AddShops;
+export default AddProducts
