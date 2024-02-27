@@ -40,6 +40,7 @@ function AddInventories() {
                     <Box sx={body1}>ENTER THE INVENTORY NAME :</Box>
                     <Box sx={body2}><input style={inputStyle} placeholder="INVENTORY NAME" type='text'></input></Box> 
                </Box>
+
             )
         }
         return Inputs;
@@ -84,6 +85,10 @@ function AddInventories() {
         alignItems: 'center',
         fontFamily:'timesnewroman',
         fontSize:'25px',
+    }
+
+    const AddButtonInput : SxProps<Theme> = {
+        
     }
 
     const body2: SxProps<Theme> = {
