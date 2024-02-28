@@ -4,6 +4,7 @@ import backgroundImage from './background.avif';
 import { useState } from "react";
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
+import { productsPageMockData } from "../MockData/ProductsPage";
 
 function AddProducts() {
 

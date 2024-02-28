@@ -11,10 +11,10 @@ import backgroundImage from './background.avif';
 export default function ProductsPage() {
 
   const column:GridColDef[]=[
-    {field:'sno', headerName:'S.No', width:100},
-    {field:'name', headerName:'Name', width:100},
-    {field:'quantity', headerName:'Quantity', width:100},
-    {field:'price', headerName:'Price', width:100},
+    {field:'sno', headerName:'S.No', width:375},
+    {field:'name', headerName:'Name', width:375},
+    {field:'quantity', headerName:'Quantity', width:375},
+    {field:'price', headerName:'Price', width:375},
   ];
 
   const dataForTable = () =>{
@@ -76,7 +76,6 @@ export default function ProductsPage() {
     flexDirection:'column', 
     padding: '10px', 
     alignItems:'center',
-    // marginTop:'300px',
     flex:1
   }
   
@@ -91,15 +90,21 @@ export default function ProductsPage() {
   return (
     <Box sx = {wholeContainer}>
     <Box sx = {ShopInvName}>
-       <Box sx = {ShopName}>SHOPNAME</Box>
-       <Box sx = {InventoryName}><label>INVENTORYNAME</label></Box>
+       <Box sx = {ShopName}>SHOPNAME:{productsPageMockData.shopName}</Box>
+       <Box sx = {InventoryName}><label>INVENTORYNAME:{productsPageMockData.inventoryName}</label></Box>
     </Box>    
     <Box sx={body}>
-     <div style={{height: 400, width: '70%' }}>
+     <div style={{height: 400, width: 1600 }}>
           <DataGrid
             rows={dataForTable()}
             columns={column}
             columnBuffer={8}
+            checkboxSelection
+            sx={{
+              '& .MuiDataGrid-row': {
+                backgroundColor: 'lightGreen',
+              },
+            }}
           />
         </div>
     <Box sx = {searchButton}><Button variant="contained">SUBMIT</Button></Box>

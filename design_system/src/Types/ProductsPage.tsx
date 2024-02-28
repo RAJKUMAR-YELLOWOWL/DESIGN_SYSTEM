@@ -1,4 +1,6 @@
 export type productsPage = {
+    shopName : string,
+    inventoryName:string,
     hasError : Boolean;
     isLoading : Boolean;
     productName : string;
