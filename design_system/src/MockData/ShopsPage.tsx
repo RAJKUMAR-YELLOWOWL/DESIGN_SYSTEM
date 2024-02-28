@@ -1,7 +1,7 @@
 import { shopsPage } from "../Types/ShopsPage"
 
 export const shopsPageMockData: shopsPage = {
-    hasError: true,
+    hasError: false,
     isLoading: false,
     shopName: {
       options: [{ id: "1", label: "Shop 1" }],

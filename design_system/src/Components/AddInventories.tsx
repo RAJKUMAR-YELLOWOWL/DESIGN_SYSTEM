@@ -87,10 +87,6 @@ function AddInventories() {
         fontSize:'25px',
     }
 
-    const AddButtonInput : SxProps<Theme> = {
-        
-    }
-
     const body2: SxProps<Theme> = {
         display: 'flex',
         flex: 1,
