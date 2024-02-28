@@ -7,93 +7,84 @@ import { Button } from '@mui/material';
 import { shopsPageMockData } from '../MockData/ShopsPage';
 import backgroundImage from './background.avif';
 
+const wholeContainer: SxProps<Theme> = {
+  overflow: 'auto',
+  minWidth: '800px',
+  backgroundImage: `url(${backgroundImage})`,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  minHeight: '100vh',
+}
+const boxContainer: SxProps<Theme> = {
+  height: '40vh',
+  maxHeight: '70vh',
+  overflowY: 'auto',
+}
+const buttonContainer: SxProps<Theme> = {
+  display: 'flex',
+  border: '1px',
+  borderRadius: '8px',
+  padding: '30px',
+  marginBottom: '30px',
+}
+const container: SxProps<Theme> = {
+  minHeight: '40vh',
+  display: 'flex',
+  border: '1px',
+  marginTop: '10px',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+};
 
-export default function ShopsPage() {
-
-  const navigate = useNavigate();
-  const handleSubmit = () => {
-    navigate('/InventoryPage')
+const addShopsButton: SxProps<Theme> = {
+  '&.addShopsBut.MuiButton-contained': {
+    paddingRight: '10px',
+    marginRight: '10px',
   }
-  const handleAddShopsClick = () => {
-    navigate('/AddShops');
-  };
+};
 
-  const handleAddInventoriesClick = () => {
-    navigate('/AddInventories');
-  };
+const button1: SxProps<Theme> = {
+  marginRight: '5px'
+};
 
-  const handleAddProductsClick = () => {
-    navigate('/AddProducts');
-  };
+const searchButton: SxProps<Theme> = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: '20vh',
+};
 
-  const wholeContainer: SxProps<Theme> = {
-    overflow: 'auto',
-    minWidth: '800px',
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    minHeight: '100vh',
-  }
-  const boxContainer: SxProps<Theme> = {
-    height: '40vh',
-    maxHeight: '70vh',
-    overflowY: 'auto',
-  }
-  const buttonContainer: SxProps<Theme> = {
-    display: 'flex',
-    border: '1px',
-    borderRadius: '8px',
-    padding: '30px',
-    marginBottom: '30px',
-  }
-  const container: SxProps<Theme> = {
-    minHeight: '40vh',
-    display: 'flex',
-    border: '1px',
-    marginTop: '10px',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-  };
+const body: SxProps<Theme> = {
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '10px',
+  alignItems: 'center',
+  marginTop: '300px'
+}
 
-  const addShopsButton: SxProps<Theme> = {
-    '&.addShopsBut.MuiButton-contained': {
-      paddingRight: '10px',
-      marginRight: '10px',
-    }
-  };
+const error: SxProps<Theme> = {
+  display: 'flex',
+  justifyContent: 'center',
+}
 
-  const button1: SxProps<Theme> = {
-    marginRight: '5px'
-  };
+const generateMenuItems = () => {
+  return shopsPageMockData.shopsList.map((shop) => (
+    <MenuItem>
+      <span>{shop.options[0].label}</span>
+    </MenuItem>
+  ))
+}
 
-  const searchButton: SxProps<Theme> = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '20vh',
-  };
+type ShopsPageProps = {
+  handleSubmit:()=>void;
+  handleAddShopsClick:()=>void;
+  handleAddInventoriesClick:()=>void;
+  handleAddProductsClick:()=>void; 
+}
 
-  const body: SxProps<Theme> = {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '10px',
-    alignItems: 'center',
-    marginTop: '300px'
-  }
+const ShopsPageComponent:React.FC<ShopsPageProps> =({handleSubmit ,handleAddShopsClick ,handleAddInventoriesClick ,handleAddProductsClick })=> {
 
-  const error: SxProps<Theme> = {
-    display: 'flex',
-    justifyContent: 'center',
-  }
-
-  const generateMenuItems = () => {
-    return shopsPageMockData.shopsList.map((shop) => (
-      <MenuItem>
-        <span>{shop.options[0].label}</span>
-      </MenuItem>
-    ))
-  }
 
   return (
 
@@ -123,3 +114,5 @@ export default function ShopsPage() {
     </Box>
   );
 }
+
+export default ShopsPageComponent

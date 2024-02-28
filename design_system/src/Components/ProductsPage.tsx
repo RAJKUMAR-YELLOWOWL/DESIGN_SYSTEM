@@ -7,8 +7,81 @@ import { Button } from '@mui/material';
 import { productsPageMockData } from '../MockData/ProductsPage';
 import backgroundImage from './background.avif';
 
+const wholeContainer : SxProps<Theme> = {
+  display:'flex',
+  flexDirection:'column',
+  overflow:'auto',
+  minWidth:'800px',
+  backgroundImage: `url(${backgroundImage})`,
+  backgroundSize: 'cover', 
+  backgroundPosition: 'center', 
+  minHeight: '100vh',
+}
 
-export default function ProductsPage() {
+const searchButton: SxProps<Theme> = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: '20vh', 
+};
+
+const ShopInvName: SxProps<Theme> = {
+  display:'flex',
+  flexDirection:'row',
+  flex:1,
+  alignItems:'center'
+}
+
+const ShopName:SxProps<Theme> = {
+  flex:1,
+  textAlign:'right',
+  justifyContent:'center',
+  fontFamily:'TimesNewRoman',
+  fontSize:'30px',
+}
+
+const InventoryName:SxProps<Theme> = {
+  flex:1,
+  textAlign:'left',
+  marginLeft:'100px',
+  fontFamily:'TimesNewRoman',
+  fontSize:'30px',
+}
+
+const body : SxProps<Theme> = {
+  display: 'flex',
+  flexDirection:'column', 
+  padding: '10px', 
+  alignItems:'center',
+  flex:1
+}
+
+
+type ProductsPageProps = {
+  shopName: string;
+  inventoryName: string;
+  hasError: Boolean;
+  isLoading: Boolean;
+  productName: string;
+  tables: Table[];
+};
+
+type Table = {
+  products: Product[];
+  totalPages: number;
+  currentPage: number;
+  selectedProduct: string;
+};
+
+type Product = {
+  sno: number;
+  name: string;
+  quantity: string;
+  price: string;
+};
+
+const ProductsPageComponent:React.FC<ProductsPageProps> =(props)=> {
 
   const column:GridColDef[]=[
     {field:'sno', headerName:'S.No', width:375},
@@ -17,81 +90,26 @@ export default function ProductsPage() {
     {field:'price', headerName:'Price', width:375},
   ];
 
-  const dataForTable = () =>{
-    return productsPageMockData.tables[0].products.map((product)=>(
-        {
-            id: product.sno,
-            sno: product.sno,
-            name: product.name,
-            quantity: product.quantity,
-            price: product.price,
-        }
-    ))
-  }
-  
-  const wholeContainer : SxProps<Theme> = {
-    display:'flex',
-    flexDirection:'column',
-    overflow:'auto',
-    minWidth:'800px',
-    backgroundImage: `url(${backgroundImage})`,
-    backgroundSize: 'cover', 
-    backgroundPosition: 'center', 
-    minHeight: '100vh',
-  }
+  const dataForTable = () => {
+    const allProducts: Product[] = [];
+    props.tables.forEach((table) => {
+        allProducts.push(...table.products);
+    });
 
-  const searchButton: SxProps<Theme> = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '20vh', 
-  };
-
-  const ShopInvName: SxProps<Theme> = {
-    display:'flex',
-    flexDirection:'row',
-    flex:1,
-    alignItems:'center'
-  }
-
-  const ShopName:SxProps<Theme> = {
-    flex:1,
-    textAlign:'right',
-    justifyContent:'center',
-    fontFamily:'TimesNewRoman',
-    fontSize:'30px',
-  }
-
-  const InventoryName:SxProps<Theme> = {
-    flex:1,
-    textAlign:'left',
-    marginLeft:'100px',
-    fontFamily:'TimesNewRoman',
-    fontSize:'30px',
-  }
-
-  const body : SxProps<Theme> = {
-    display: 'flex',
-    flexDirection:'column', 
-    padding: '10px', 
-    alignItems:'center',
-    flex:1
-  }
-  
-  const generateMenuItems = () => {
-    return productsPageMockData.tables[0].products.map((product)=>(
-        <MenuItem>
-        <span>{product.name}</span>
-        </MenuItem>
-    ))
-  }
+    return allProducts.map((product) => ({
+        id: product.sno,
+        sno: product.sno,
+        name: product.name,
+        quantity: product.quantity,
+        price: product.price,
+    }));
+};
 
   return (
     <Box sx = {wholeContainer}>
     <Box sx = {ShopInvName}>
-       <Box sx = {ShopName}>SHOPNAME:{productsPageMockData.shopName}</Box>
-       <Box sx = {InventoryName}><label>INVENTORYNAME:{productsPageMockData.inventoryName}</label></Box>
+       <Box sx = {ShopName}>SHOPNAME:{props.shopName}</Box>
+       <Box sx = {InventoryName}><label>INVENTORYNAME:{props.inventoryName}</label></Box>
     </Box>    
     <Box sx={body}>
      <div style={{height: 400, width: 1600 }}>
@@ -115,3 +133,5 @@ export default function ProductsPage() {
     </Box>
   );
 }
+
+export default ProductsPageComponent
