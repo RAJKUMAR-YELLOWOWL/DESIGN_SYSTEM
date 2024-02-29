@@ -18,7 +18,7 @@ export const inventoryPageMockData: inventoryPage = {
     },
   };
   
-  export const inventoryPageMockData1: inventoryPage = {
+  export const inventoryPageMockDataHasError: inventoryPage = {
     hasError: true,
     isLoading: false,
     inventoryName: [
@@ -36,7 +36,7 @@ export const inventoryPageMockData: inventoryPage = {
     },
   };
 
-  export const inventoryPageMockData2: inventoryPage = {
+  export const inventoryPageMockDataIsLoading: inventoryPage = {
     hasError: false,
     isLoading: true,
     inventoryName: [

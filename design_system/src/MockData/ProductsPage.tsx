@@ -27,7 +27,7 @@ export const productsPageMockData: productsPage = {
     },
   };
   
-  export const productsPageMockData1: productsPage = {
+  export const productsPageMockDataHasError: productsPage = {
     shopName: "SHOP 1",
     inventoryName: "INVENTORY 1",
     hasError: true,
@@ -54,7 +54,7 @@ export const productsPageMockData: productsPage = {
     },
   };
 
-  export const productsPageMockData2: productsPage = {
+  export const productsPageMockDataIsLoading: productsPage = {
     shopName: "SHOP 1",
     inventoryName: "INVENTORY 1",
     hasError: false,

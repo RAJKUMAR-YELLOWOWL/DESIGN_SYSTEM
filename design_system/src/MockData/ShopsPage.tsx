@@ -26,7 +26,7 @@ export const shopsPageMockData: shopsPage = {
     },
   };
 
-  export const shopsPageMockData1: shopsPage = {
+  export const shopsPageMockDataHasError: shopsPage = {
     hasError: true,
     isLoading: false,
     shopName: {
@@ -52,7 +52,7 @@ export const shopsPageMockData: shopsPage = {
     },
   };
 
-  export const shopsPageMockData2: shopsPage = {
+  export const shopsPageMockDataIsLoading: shopsPage = {
     hasError: false,
     isLoading: true,
     shopName: {

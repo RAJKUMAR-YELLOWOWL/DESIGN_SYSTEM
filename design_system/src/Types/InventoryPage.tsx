@@ -13,6 +13,6 @@ export type dropDown = {
 }
 
 export type option = {
-    id : String;
+    id : string;
     label : string;
 }

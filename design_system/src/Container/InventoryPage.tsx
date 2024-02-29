@@ -1,22 +1,31 @@
-import React from 'react'
+
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import InventoryPageComponent from '../Components/InventoryPage';
 import { inventoryPageMockData } from '../MockData/InventoryPage';
-
-
-const InventoryPage =()=> {
-
+import { dropDown } from '../Types/InventoryPage'; 
+const InventoryPage = () => {
   const navigate = useNavigate();
-  const handleSubmit = () =>{
-           navigate('/ProductsPage')
-  }
-  
+
+  const handleSubmit = () => {
+    navigate('/ProductsPage');
+  };
+
+  const inventoryName: dropDown[] = inventoryPageMockData.inventoryName.map(item => ({
+    options: item.options.map(option => ({
+      id: String(option.id), 
+      label: option.label
+    })),
+    selectedValue: item.selectedValue
+  }));
+
   return (
     <InventoryPageComponent
-     {...inventoryPageMockData}
-     handleSubmit = {handleSubmit}
+      {...inventoryPageMockData}
+      inventoryName={inventoryName}
+      handleSubmit={handleSubmit}
     />
-  )
-}
+  );
+};
 
-export default InventoryPage
+export default InventoryPage;

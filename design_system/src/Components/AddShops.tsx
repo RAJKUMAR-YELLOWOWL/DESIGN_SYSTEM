@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import backgroundImage from './background.avif';
 import { useState } from "react";
 import Alert from '@mui/material/Alert';
+import { Messages } from "./Context";
 import CheckIcon from '@mui/icons-material/Check';
 
 const wholeConShops: SxProps<Theme> = {
@@ -118,13 +119,14 @@ type AddShopsProps = {
     onSubmitClick : () => void;
 }
 
-
 const AddShopsComponents:React.FC<AddShopsProps> = ({handleNavigation, showAlert}) => {
+
+    const[showDetails,setShowDetails] = useState(false)
 
     return (
         <Box sx={wholeConShops}>
             <Box sx={headerShops}>
-                <h2>HERE YOU CAN ADD THE SHOPS</h2>
+                <h2>{Messages.SHOPS_PAGE_HEADER}</h2>
             </Box>
             <Box sx={container}>
                 <Box sx={bodyShops}>
@@ -132,8 +134,10 @@ const AddShopsComponents:React.FC<AddShopsProps> = ({handleNavigation, showAlert
                     <Box sx={body2}><input style={inputStyleShops} placeholder="SHOP NAME" type='text'></input></Box><br /><br /><br /><br />
                 </Box>
                 <Box sx={bodyShops}>
-                    <Box sx={body1}>ENTER THE SHOPLOCATION </Box>
+                    <Box sx={body1} onMouseEnter={() => setShowDetails(true)} onMouseLeave={() => setShowDetails(false)}>ENTER THE SHOPLOCATION </Box>
                 </Box>
+                {showDetails &&
+                <>
                 <Box sx={shopDetails}>
                     <Box sx={shopDetailsPart}>
                         <Box sx={shopDetails1}><label>ENTER THE COUNTRY :</label></Box>
@@ -147,7 +151,7 @@ const AddShopsComponents:React.FC<AddShopsProps> = ({handleNavigation, showAlert
                         <Box sx={shopDetails1}><label>ENTER THE CITY :</label></Box>
                         <Box sx={shopDetails2}><input style={inputStyle} placeholder="CITY" type='text'></input></Box><br /><br />
                     </Box>
-                </Box>
+                </Box></>}
                 <Box sx={submitButton}><Button onClick={handleNavigation} variant="contained">ADD SHOPS</Button></Box>
                 {showAlert &&
                     <Box sx={alertStyle}>
@@ -156,7 +160,9 @@ const AddShopsComponents:React.FC<AddShopsProps> = ({handleNavigation, showAlert
                         </Alert>
                     </Box>}
             </Box>
+                
         </Box>
     )
 }
 export default AddShopsComponents;
+

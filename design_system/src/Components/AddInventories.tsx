@@ -1,8 +1,10 @@
+
+
+import React from 'react';
 import { Button, SxProps, Theme, Typography, Box } from "@mui/material";
 import backgroundImage from './background.avif';
-import { useState } from "react";
 import Alert from '@mui/material/Alert';
-import CheckIcon from '@mui/icons-material/Check';
+import { Messages } from "./Context";
 
 const wholeConInventories: SxProps<Theme> = {
     minHeight: '100vh',
@@ -82,40 +84,22 @@ const alertStyle: SxProps<Theme> = {
 }
 
 type AddInventoriesProps = {
-        handleNavigation: () => void; 
-        handleAddInventory: ()=>void;
-        hasError : Boolean;
-        isLoading : Boolean;
-        onSubmitClick : () => void;
-        showAlert:Boolean;
-        loading:Boolean;
-        addInventoryCount:number
+    handleNavigation: () => void;
+    handleAddInventory: () => void;
+    hasError: Boolean;
+    isLoading: Boolean;
+    onSubmitClick: () => void;
+    showAlert: Boolean;
+    loading: Boolean;
+    addInventoryCount: number;
 }
 
-export const AddInventoriesComponent: React.FC<AddInventoriesProps> = ({handleNavigation, handleAddInventory, addInventoryCount, showAlert, loading}) => {
-
-    const renderInventoryInputs = () => {
-        const Inputs = [];
-        for (let i = 0; i < addInventoryCount; i++) {
-            Inputs.push(
-                <Box sx={bodyInventories}>
-                    <Box sx={body1}>ENTER THE INVENTORY NAME :</Box>
-                    <Box sx={body2}><input style={inputStyle} placeholder="INVENTORY NAME" type='text'></input></Box>
-                </Box>
-
-            )
-        }
-        return Inputs;
-    }
-
-
-
-
+export const AddInventoriesComponent: React.FC<AddInventoriesProps> = ({ handleNavigation, handleAddInventory, addInventoryCount, showAlert, loading }) => {
 
     return (
         <Box sx={wholeConInventories}>
             <Box sx={headerInventories}>
-                <h2>HERE YOU CAN ADD THE INVENTORIES</h2>
+                <h2>{Messages.SHOPS_PAGE_HEADER}</h2>
             </Box>
             <Box sx={container}>
                 <Box sx={bodyInventories}>
@@ -123,7 +107,12 @@ export const AddInventoriesComponent: React.FC<AddInventoriesProps> = ({handleNa
                     <Box sx={body2}><input style={inputStyle} placeholder="SHOP NAME" type='text'></input></Box><br /><br /><br /><br />
                 </Box>
 
-                {/* {renderInventoryInputs()} */}
+                {Array.from({ length: addInventoryCount }).map((_, index) => (
+                    <Box sx={bodyInventories} key={index}>
+                        <Box sx={body1}>ENTER THE INVENTORY NAME :</Box>
+                        <Box sx={body2}><input style={inputStyle} placeholder="INVENTORY NAME" type='text'></input></Box>
+                    </Box>
+                ))}
 
                 <Box sx={AddButton}><Button onClick={handleAddInventory} variant="contained">ADD</Button></Box>
                 <Box sx={submitButton}><Button onClick={handleNavigation} variant="contained">ADD INVENTORIES</Button></Box>

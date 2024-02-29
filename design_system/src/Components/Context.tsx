@@ -1,0 +1,5 @@
+export const Messages : Record<string, string>={
+SHOPS_PAGE_HEADER: "ADD SHOPS",
+INVENTORY_PAGE_HEADER:"ADD INVENTORY",
+PRODUCTS_PAGE_HEADER:"ADD PRODUCTS",        
+};
