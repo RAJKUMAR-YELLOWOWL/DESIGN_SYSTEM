@@ -9,6 +9,9 @@ const AddProducts=()=> {
 
     const navigation = useNavigate();
     const [showAlert, setShowAlert] = useState(false)
+    const [ProductNameChange, setProductNameChange] = useState('')
+    const [ProductQuantityChange, setProductQuantityChange] = useState('')
+    const [ProductPriceChange, setProductPriceChange] = useState('')
 
     const handleAlert = () => {
         setShowAlert(true);
@@ -17,11 +20,28 @@ const AddProducts=()=> {
         }, 2000)
     }
 
+    const handleProductNameChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
+      setProductNameChange(event.target.value)
+    }
+    const handleProductQuantityChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
+      setProductQuantityChange(event.target.value)
+    }
+    const handleProductPriceChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
+      setProductPriceChange(event.target.value)
+    }
+  
+
   return (
     <AddProductsComponents
     {...productsPageMockData}
     handleAlert = {handleAlert}
     showAlert = {showAlert}
+    ProductNameChange = {ProductNameChange}
+    ProductQuantityChange = {ProductQuantityChange}
+    ProductPriceChange = {ProductPriceChange}
+    handleProductNameChange = {handleProductNameChange}
+    handleProductQuantityChange = {handleProductQuantityChange}
+    handleProductPriceChange = {handleProductPriceChange}
     />
   )
 }

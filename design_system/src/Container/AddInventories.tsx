@@ -10,6 +10,7 @@ const AddInventories = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [addInventoryCount, setAddInventoryCount] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [shopName, setShopName] = useState('');
 
   const handleAddInventory = () => {
     setAddInventoryCount(prevCount => prevCount + 1)
@@ -28,6 +29,10 @@ const AddInventories = () => {
     }, 2000);
   }
 
+  const handleShopNameChange = (event : React.ChangeEvent<HTMLInputElement>) => {
+    setShopName(event.target.value);
+  }
+
   
 
   return (
@@ -37,6 +42,8 @@ const AddInventories = () => {
       handleAddInventory={handleAddInventory}
       loading={loading}
       showAlert={showAlert}
+      shopName = {shopName}
+      handleShopNameChange = {handleShopNameChange}
       addInventoryCount = {addInventoryCount}
     />
   )

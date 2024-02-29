@@ -6,6 +6,8 @@ import { FormControl, MenuItem, Select, InputLabel, SxProps, Theme, SelectChange
 import { Button } from '@mui/material';
 import { productsPageMockData } from '../MockData/ProductsPage';
 import backgroundImage from './background.avif';
+import { Messages } from './Context';
+import { Message } from '@material-ui/icons';
 
 const wholeContainer : SxProps<Theme> = {
   display:'flex',
@@ -108,8 +110,8 @@ const ProductsPageComponent:React.FC<ProductsPageProps> =(props)=> {
   return (
     <Box sx = {wholeContainer}>
     <Box sx = {ShopInvName}>
-       <Box sx = {ShopName}>SHOPNAME:{props.shopName}</Box>
-       <Box sx = {InventoryName}><label>INVENTORYNAME:{props.inventoryName}</label></Box>
+       <Box sx = {ShopName}>{Messages.SHOP_NAME}:{props.shopName}</Box>
+       <Box sx = {InventoryName}><label>{Messages.INVENTORY_NAME}{props.inventoryName}</label></Box>
     </Box>    
     <Box sx={body}>
      <div style={{height: 400, width: 1600 }}>
