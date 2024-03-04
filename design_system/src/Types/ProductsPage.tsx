@@ -1,8 +1,8 @@
-export type productsPage = {
+export type ProductsPage = {
     shopName : string,
     inventoryName:string,
-    hasError : Boolean;
-    isLoading : Boolean;
+    hasError : boolean;
+    isLoading : boolean;
     productName : string;
     tables : table[];
     onChangeProduct : (product:string)=>void;

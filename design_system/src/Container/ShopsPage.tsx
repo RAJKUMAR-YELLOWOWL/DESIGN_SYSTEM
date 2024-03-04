@@ -1,52 +1,25 @@
-// import React from 'react'
-// import { useNavigate } from 'react-router-dom';
-// import ShopsPageComponent from '../Components/ShopsPage';
-// import { shopsPageMockData } from '../MockData/ShopsPage';
-
-// const ShopsPage =()=> {
-
-//   const navigate = useNavigate();
-//   const handleSubmit = () => {
-//     navigate('/InventoryPage')
-//   }
-//   const handleAddShopsClick = () => {
-//     navigate('/AddShops');
-//   };
-
-//   const handleAddInventoriesClick = () => {
-//     navigate('/AddInventories');
-//   };
-
-//   const handleAddProductsClick = () => {
-//     navigate('/AddProducts');
-//   };
-
-//   return (
-//     <ShopsPageComponent
-//     {...shopsPageMockData}
-//     handleSubmit = {handleSubmit}
-//     handleAddShopsClick = {handleAddShopsClick}
-//     handleAddInventoriesClick = {handleAddInventoriesClick}
-//     handleAddProductsClick = {handleAddProductsClick}
-//     />
-//   )
-// }
-
-// export default ShopsPage
-
-import React from 'react';
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import ShopsPageComponent from '../Components/ShopsPage';
 import { shopsPageMockData } from '../MockData/ShopsPage';
+import { useState } from 'react';
 
-const ShopsPage = () => {
+
+
+const ShopsPage =()=> {
+
+  const [shopNameChange, setShopNameChange] = useState('')
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate('/InventoryPage');
-  };
+    navigate('/InventoryPage')
+  }
   const handleAddShopsClick = () => {
     navigate('/AddShops');
   };
+
+  const handleShopNameChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
+    setShopNameChange(event.target.value)
+  }
 
   const handleAddInventoriesClick = () => {
     navigate('/AddInventories');
@@ -55,34 +28,22 @@ const ShopsPage = () => {
   const handleAddProductsClick = () => {
     navigate('/AddProducts');
   };
+  
 
-  const modifiedShopsPageMockData = {
-    ...shopsPageMockData,
-    shopName: {
-      ...shopsPageMockData.shopName,
-      options: shopsPageMockData.shopName.options.map((option) => ({
-        id: option.id.toString(),
-        label: option.label,
-      })),
-    },
-    shopsList: shopsPageMockData.shopsList.map((shop) => ({
-      ...shop,
-      options: shop.options.map((option) => ({
-        id: option.id.toString(), 
-        label: option.label,
-      })),
-    })),
-  };
+  
 
   return (
     <ShopsPageComponent
-      {...modifiedShopsPageMockData}
-      handleSubmit={handleSubmit}
-      handleAddShopsClick={handleAddShopsClick}
-      handleAddInventoriesClick={handleAddInventoriesClick}
-      handleAddProductsClick={handleAddProductsClick}
+    {...shopsPageMockData}
+    handleSubmit = {handleSubmit}
+    handleAddShopsClick = {handleAddShopsClick}
+    handleAddInventoriesClick = {handleAddInventoriesClick}
+    handleAddProductsClick = {handleAddProductsClick}
+    handleShopNameChange={handleShopNameChange}
+    shopNameChange = {shopNameChange}
     />
-  );
-};
+  )
+}
 
-export default ShopsPage;
+export default ShopsPage
+

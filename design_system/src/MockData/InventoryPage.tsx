@@ -1,55 +1,76 @@
-import { inventoryPage } from "../Types/InventoryPage";
+import { InventoryPage } from "../Types/InventoryPage";
 
-export const inventoryPageMockData: inventoryPage = {
+export const inventoryPageMockData: InventoryPage = {
     hasError: false,
     isLoading: false,
-    inventoryName: [
-      { options: [{ id: "1", label: "Inventory 1" }], selectedValue: "1" },
-    ],
-    shopsList: [
-      { options: [{ id: "1", label: "Shop 1" }], selectedValue: "1" },
-      { options: [{ id: "2", label: "Shop 2" }], selectedValue: "2" },
-    ],
+    inventoryName: { 
+      options: [
+        { id: "1", label: "Inventory 1" },
+        { id: "2", label: "Inventory 2" },
+        { id: "3", label: "Inventory 3" },
+        { id: "4", label: "Inventory 4" },
+      ],
+    },
+    shopsList:{ 
+      options:[ 
+      { id: "1", label: "Shop 1" },
+      { id: "2", label: "Shop 2" },
+      { id: "3", label: "Shop 3" },
+      { id: "4", label: "Shop 4" },
+    ]
+  },
     onChangeInventory: (inventory) => {
-      console.log("Selected inventory:", inventory);
     },
     onSubmitClick: () => {
-      console.log("Submit button clicked");
     },
   };
   
-  export const inventoryPageMockDataHasError: inventoryPage = {
+  export const inventoryPageMockDataHasError: InventoryPage = {
     hasError: true,
     isLoading: false,
-    inventoryName: [
-      { options: [{ id: "1", label: "Inventory 1" }], selectedValue: "1" },
-    ],
-    shopsList: [
-      { options: [{ id: "1", label: "Shop 1" }], selectedValue: "1" },
-      { options: [{ id: "2", label: "Shop 2" }], selectedValue: "2" },
-    ],
+    inventoryName: { 
+      options: [
+        { id: "1", label: "Inventory 1" },
+        { id: "2", label: "Inventory 2" },
+        { id: "3", label: "Inventory 3" },
+        { id: "4", label: "Inventory 4" },
+      ],
+    },
+    shopsList:{ 
+      options:[ 
+      { id: "1", label: "Shop 1" },
+      { id: "2", label: "Shop 2" },
+      { id: "3", label: "Shop 3" },
+      { id: "4", label: "Shop 4" },
+    ]
+  },
     onChangeInventory: (inventory) => {
-      console.log("Selected inventory:", inventory);
     },
     onSubmitClick: () => {
-      console.log("Submit button clicked");
     },
   };
 
-  export const inventoryPageMockDataIsLoading: inventoryPage = {
+  export const inventoryPageMockDataIsLoading: InventoryPage = {
     hasError: false,
     isLoading: true,
-    inventoryName: [
-      { options: [{ id: "1", label: "Inventory 1" }], selectedValue: "1" },
-    ],
-    shopsList: [
-      { options: [{ id: "1", label: "Shop 1" }], selectedValue: "1" },
-      { options: [{ id: "2", label: "Shop 2" }], selectedValue: "2" },
-    ],
+    inventoryName: { 
+      options: [
+        { id: "1", label: "Inventory 1" },
+        { id: "2", label: "Inventory 2" },
+        { id: "3", label: "Inventory 3" },
+        { id: "4", label: "Inventory 4" },
+      ],
+    },
+    shopsList:{ 
+      options:[ 
+      { id: "1", label: "Shop 1" },
+      { id: "2", label: "Shop 2" },
+      { id: "3", label: "Shop 3" },
+      { id: "4", label: "Shop 4" },
+    ]
+  },
     onChangeInventory: (inventory) => {
-      console.log("Selected inventory:", inventory);
     },
     onSubmitClick: () => {
-      console.log("Submit button clicked");
     },
   };

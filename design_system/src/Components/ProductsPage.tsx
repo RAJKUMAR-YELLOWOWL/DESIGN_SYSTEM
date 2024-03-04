@@ -6,7 +6,7 @@ import { FormControl, MenuItem, Select, InputLabel, SxProps, Theme, SelectChange
 import { Button } from '@mui/material';
 import { productsPageMockData } from '../MockData/ProductsPage';
 import backgroundImage from './background.avif';
-import { Messages } from './Context';
+import { Messages } from './Contents';
 import { Message } from '@material-ui/icons';
 
 const wholeContainer : SxProps<Theme> = {
@@ -127,7 +127,7 @@ const ProductsPageComponent:React.FC<ProductsPageProps> =(props)=> {
             }}
           />
         </div>
-    <Box sx = {searchButton}><Button variant="contained">SUBMIT</Button></Box>
+    <Box sx = {searchButton}><Button variant="contained">{Messages.SUBMIT}</Button></Box>
 
     </Box>
 

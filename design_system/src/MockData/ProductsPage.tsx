@@ -1,6 +1,6 @@
-import { productsPage } from "../Types/ProductsPage";
+import { ProductsPage } from "../Types/ProductsPage";
 
-export const productsPageMockData: productsPage = {
+export const productsPageMockData: ProductsPage = {
     shopName: "SHOP 1",
     inventoryName: "INVENTORY 1",
     hasError: false,
@@ -20,14 +20,12 @@ export const productsPageMockData: productsPage = {
       },
     ],
     onChangeProduct: (product) => {
-      console.log("Selected product:", product);
     },
     onSubmitClick: () => {
-      console.log("Submit button clicked");
     },
   };
   
-  export const productsPageMockDataHasError: productsPage = {
+  export const productsPageMockDataHasError: ProductsPage = {
     shopName: "SHOP 1",
     inventoryName: "INVENTORY 1",
     hasError: true,
@@ -47,14 +45,12 @@ export const productsPageMockData: productsPage = {
       },
     ],
     onChangeProduct: (product) => {
-      console.log("Selected product:", product);
     },
     onSubmitClick: () => {
-      console.log("Submit button clicked");
     },
   };
 
-  export const productsPageMockDataIsLoading: productsPage = {
+  export const productsPageMockDataIsLoading: ProductsPage = {
     shopName: "SHOP 1",
     inventoryName: "INVENTORY 1",
     hasError: false,
@@ -74,9 +70,7 @@ export const productsPageMockData: productsPage = {
       },
     ],
     onChangeProduct: (product) => {
-      console.log("Selected product:", product);
     },
     onSubmitClick: () => {
-      console.log("Submit button clicked");
     },
   };

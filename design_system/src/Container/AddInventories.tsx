@@ -16,6 +16,10 @@ const AddInventories = () => {
     setAddInventoryCount(prevCount => prevCount + 1)
   }
 
+  const handleMinusInventory = () => {
+    setAddInventoryCount(prevCount => prevCount - 1)
+  }
+
   const navigation = useNavigate();
   const handleNavigation = () => {
     setShowAlert(true);
@@ -33,8 +37,6 @@ const AddInventories = () => {
     setShopName(event.target.value);
   }
 
-  
-
   return (
     <AddInventoriesComponent
       {...inventoryPageMockData}
@@ -45,6 +47,7 @@ const AddInventories = () => {
       shopName = {shopName}
       handleShopNameChange = {handleShopNameChange}
       addInventoryCount = {addInventoryCount}
+      handleMinusInventory={handleMinusInventory}
     />
   )
 }

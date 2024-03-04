@@ -1,149 +1,14 @@
-// import { Button, SxProps, Theme, Typography, Box } from "@mui/material";
-// import backgroundImage from './background.avif';
-// import { useState } from "react";
-// import Alert from '@mui/material/Alert';
-// import CheckIcon from '@mui/icons-material/Check';
-// import { Messages } from "./Context";
-
-// const wholeConInventories: SxProps<Theme> = {
-//     minHeight: '100vh',
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//     backgroundImage: `url(${backgroundImage})`,
-//     backgroundSize: 'cover',
-//     backgroundPosition: 'center',
-//     minWidth: '800px',
-// }
-
-// const headerInventories: SxProps<Theme> = {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     fontFamily: 'Times New Roman, Times, serif',
-//     fontSize: 'x-large',
-// }
-
-// const container: SxProps<Theme> = {
-//     display: 'flex',
-//     width: '800px',
-//     flexDirection: 'column',
-//     justifyContent: 'center',
-//     flex: 1,
-//     marginTop: -20,
-// }
-
-// const bodyInventories: SxProps<Theme> = {
-//     display: 'flex',
-//     flexDirection: 'row',
-// }
-
-// const body1: SxProps<Theme> = {
-//     display: 'flex',
-//     flex: 1,
-//     alignItems: 'center',
-//     fontFamily: 'timesnewroman',
-//     fontSize: '25px',
-// }
-
-// const body2: SxProps<Theme> = {
-//     display: 'flex',
-//     flex: 1,
-//     alignItems: 'center',
-//     marginTop: '10px',
-// }
-
-// const inputStyle = {
-//     minWidth: '300px',
-//     minHeight: '27px'
-// };
-
-// const AddButton: SxProps<Theme> = {
-//     display: 'flex',
-//     borderRadius: '20px',
-//     height: '25px',
-//     justifyContent: 'center',
-//     marginTop: '20px'
-// }
-
-// const submitButton: SxProps<Theme> = {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     minHeight: '10vh',
-// }
-
-// const alertStyle: SxProps<Theme> = {
-//     position: 'fixed',
-//     top: '20px',
-//     left: '50%',
-//     transform: 'translateX(-50%)',
-//     zIndex: 9999,
-//     maxWidth: '90%',
-//     width: '300px',
-// }
-
-// type AddInventoriesProps = {
-//         handleNavigation: () => void; 
-//         handleAddInventory: ()=>void;
-//         hasError : Boolean;
-//         isLoading : Boolean;
-//         onSubmitClick : () => void;
-//         showAlert:Boolean;
-//         loading:Boolean;
-//         addInventoryCount:number
-// }
-
-// export const AddInventoriesComponent: React.FC<AddInventoriesProps> = ({handleNavigation, handleAddInventory, addInventoryCount, showAlert, loading}) => {
-
-//     const renderInventoryInputs = () => {
-//         const Inputs = [];
-//         for (let i = 0; i < addInventoryCount; i++) {
-//             Inputs.push(
-//                 <Box sx={bodyInventories}>
-//                     <Box sx={body1}>ENTER THE INVENTORY NAME :</Box>
-//                     <Box sx={body2}><input style={inputStyle} placeholder="INVENTORY NAME" type='text'></input></Box>
-//                 </Box>
-
-//             )
-//         }
-//         return Inputs;
-//     }
-
-//     return (
-//         <Box sx={wholeConInventories}>
-//             <Box sx={headerInventories}>
-//                 <h2>{Messages.SHOPS_PAGE_HEADER}</h2>
-//             </Box>
-//             <Box sx={container}>
-//                 <Box sx={bodyInventories}>
-//                     <Box sx={body1}><label>ENTER THE SHOP NAME      : </label></Box>
-//                     <Box sx={body2}><input style={inputStyle} placeholder="SHOP NAME" type='text'></input></Box><br /><br /><br /><br />
-//                 </Box>
-
-//                 {renderInventoryInputs()}
-
-//                 <Box sx={AddButton}><Button onClick={handleAddInventory} variant="contained">ADD</Button></Box>
-//                 <Box sx={submitButton}><Button onClick={handleNavigation} variant="contained">ADD INVENTORIES</Button></Box>
-//                 {loading && <label>LOADING....</label>}
-//                 {showAlert &&
-//                     <Box sx={alertStyle}>
-//                         <Alert>
-//                             INVENTORY ADDED SUCCESSFULLY
-//                         </Alert>
-//                     </Box>}
-//             </Box>
-//         </Box>
-//     )
-// }
-
 import React from 'react';
-import { Button, SxProps, Theme, Typography, Box } from "@mui/material";
+import { Button, SxProps, Theme, TextField, Box } from "@mui/material";
 import backgroundImage from './background.avif';
 import Alert from '@mui/material/Alert';
-import { Messages } from "./Context";
+import { Messages } from "./Contents";
+import CircularProgress from '@mui/material/CircularProgress';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 const wholeConInventories: SxProps<Theme> = {
-    minHeight: '100vh',
+    minHeight: '98vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -158,40 +23,38 @@ const headerInventories: SxProps<Theme> = {
     justifyContent: 'center',
     fontFamily: 'Times New Roman, Times, serif',
     fontSize: 'x-large',
+    flex:1,
 }
 
 const container: SxProps<Theme> = {
     display: 'flex',
     width: '800px',
-    flexDirection: 'column',
+    flexDirection: 'row',
     justifyContent: 'center',
+    alignItems:'start',
     flex: 1,
     marginTop: -20,
+    maxHeight:'600px',
 }
 
-const bodyInventories: SxProps<Theme> = {
-    display: 'flex',
-    flexDirection: 'row',
+const container1:SxProps<Theme> = {
 }
-
-const body1: SxProps<Theme> = {
-    display: 'flex',
-    flex: 1,
-    alignItems: 'center',
-    fontFamily: 'timesnewroman',
-    fontSize: '25px',
+const container2: SxProps<Theme> = {
+    justifyContent:'start',
+    maxHeight:"300px",
+    overflowY: 'auto',
 }
 
 const body2: SxProps<Theme> = {
     display: 'flex',
-    flex: 1,
     alignItems: 'center',
     marginTop: '10px',
 }
 
 const inputStyle = {
-    minWidth: '300px',
-    minHeight: '27px'
+    minWidth: '650px',
+    minHeight: '50px',
+    marginRight:'5px'
 };
 
 const AddButton: SxProps<Theme> = {
@@ -219,15 +82,22 @@ const alertStyle: SxProps<Theme> = {
     width: '300px',
 }
 
+const InvAddButton : SxProps<Theme> = {
+    display:"flex",
+    justifyContent:"center",
+    marginTop:"5px",
+}   
+
 type AddInventoriesProps = {
     shopName: string;
     addInventoryCount: number;
-    hasError: Boolean;
-    isLoading: Boolean;
-    showAlert: Boolean;
-    loading: Boolean;
+    hasError: boolean;
+    isLoading: boolean;
+    showAlert: boolean;
+    loading: boolean;
     handleNavigation: () => void;
     handleAddInventory: () => void;
+    handleMinusInventory: () => void;
     handleShopNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void; 
     onSubmitClick: () => void;
 }
@@ -235,41 +105,41 @@ type AddInventoriesProps = {
 export const AddInventoriesComponent: React.FC<AddInventoriesProps> = ({
     handleNavigation,
     handleAddInventory,
+    handleMinusInventory,
     addInventoryCount,
     showAlert,
     loading,
-    handleShopNameChange, 
+    handleShopNameChange,   
     shopName,
 }) => {
 
     return (
         <Box sx={wholeConInventories}>
             <Box sx={headerInventories}>
-                <h2>{Messages.SHOPS_PAGE_HEADER}</h2>   
+                <h2>{Messages.INVENTORY_PAGE_HEADER}</h2>   
             </Box>
             <Box sx={container}>
-                <Box sx={bodyInventories}>
-                    <Box sx={body1}><label>{Messages.SHOP_NAME_LABEL} </label></Box>
-                    <Box sx={body2}><input style={inputStyle} placeholder="SHOP NAME" type='text' value={shopName} onChange={handleShopNameChange} /></Box><br /><br /><br /><br />
-                </Box>
-
-                {Array.from({ length: addInventoryCount }).map((_, index) => (
-                    <Box sx={bodyInventories} key={index}>
-                        <Box sx={body1}>{Messages.INVEMTORY_NAME_LABEL}</Box>
-                        <Box sx={body2}><input style={inputStyle} placeholder="INVENTORY NAME" type='text'></input></Box>
+                <Box sx = {container1}>
+                    <Box sx={body2}><TextField style={inputStyle} value={shopName} onChange={handleShopNameChange} label={Messages.SHOP_NAME}></TextField></Box><br /><br />
+                    <Box sx = {container2}>
+                        {Array.from({length : addInventoryCount}).map((_, index)=>(
+                            <Box key={index}>
+                            <Box sx={body2}><TextField style={inputStyle} label={Messages.INVENTORY_NAME}></TextField></Box>
+                            </Box>
+                        ))}
+                        <Box sx = {InvAddButton}><button onClick={handleAddInventory}><AddCircleIcon /></button> 
+                        <button onClick={handleMinusInventory}><RemoveCircleOutlineIcon /></button></Box>    
                     </Box>
-                ))}
-
-                <Box sx={AddButton}><Button onClick={handleAddInventory} variant="contained">ADD</Button></Box>
-                <Box sx={submitButton}><Button onClick={handleNavigation} variant="contained">ADD INVENTORIES</Button></Box>
-                {loading && <label>{Messages.LOADER}</label>}
-                {showAlert &&
-                    <Box sx={alertStyle}>
-                        <Alert>
-                            {Messages.INVENTORY_ADDED_ALERT}
-                        </Alert>
-                    </Box>}
+                    {!loading ? <Box sx={submitButton}><Button onClick={handleNavigation} variant="contained">{Messages.INVENTORY_PAGE_HEADER}</Button></Box>: <Box sx={submitButton}><CircularProgress /></Box>} 
+                </Box>
             </Box>
+            
+            {showAlert &&
+                <Box sx={alertStyle}>
+                    <Alert>
+                        {Messages.INVENTORY_ADDED_ALERT}
+                    </Alert>
+                </Box>}
         </Box>
     )
 }

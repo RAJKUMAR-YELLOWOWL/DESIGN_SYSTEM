@@ -1,18 +1,20 @@
-import { Button, SxProps, Theme, Typography, Box } from "@mui/material";
+import { Button, SxProps, Theme, Box, TextField} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from './background.avif';
 import { useState } from "react";
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
 import { productsPageMockData } from "../MockData/ProductsPage";
-import { Messages } from "./Context";
+import { Messages } from "./Contents";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const wholeConProducts: SxProps<Theme> = {
-    minHeight: '100vh',
+    minHeight: '98vh',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
     backgroundImage: `url(${backgroundImage})`,
+    alignItems: 'center',
+    justifyContent:'center',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     minWidth: '800px',
@@ -20,16 +22,16 @@ const wholeConProducts: SxProps<Theme> = {
 
 const headerProducts: SxProps<Theme> = {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'START',
     fontFamily: 'Times New Roman, Times, serif',
     fontSize: 'x-large',
-    marginLeft: '-90px'
+    marginLeft: '-90px',
 }
 
 const container: SxProps<Theme> = {
     display: 'flex',
-    width: '800px',
-    flex: 1,
+    flex:1,
+    width: '700px',
     flexDirection: 'column',
     justifyContent: 'center',
     marginTop: -20,
@@ -38,30 +40,23 @@ const container: SxProps<Theme> = {
 const bodyProducts: SxProps<Theme> = {
     display: 'flex',
     flexDirection: 'row',
+    backgroundColor:'black',
 }
 
-const body1: SxProps<Theme> = {
-    display: 'flex',
-    flex: 1,
-    alignItems: 'center',
-    fontFamily: 'timesnewroman',
-    fontSize: '25px',
-}
 
 const body2: SxProps<Theme> = {
     display: 'flex',
-    flex: 1,
-    alignItems: 'center',
+    justifyContent:'center',
 }
 
 const inputStyle = {
-    minWidth: '300px',
+    minWidth: '650px',
     minHeight: '27px',
 }
 
 const inputStyleShopsInven = {
-    minWidth: '310px',
-    minHeight: '27px'
+    minWidth: '650px',
+    minHeight: '50px'
 }
 
 const productDetails: SxProps<Theme> = {
@@ -83,7 +78,6 @@ const ProductDetailsPart: SxProps<Theme> = {
 
 const productDetails1: SxProps<Theme> = {
     display: 'flex',
-    flex: 1,
     alignItems: 'center',
     fontSize: '25px'
 }
@@ -116,61 +110,43 @@ type AddProductsProps = {
     productName : string;
     shopName : string,
     inventoryName:string,
-
-    ProductQuantityChange: string;
-    ProductPriceChange: string;
-    ProductNameChange: string;
-    showAlert: Boolean;
-    hasError : Boolean;
-    isLoading : Boolean;
+    showAlert: boolean;
+    hasError : boolean;
+    isLoading : boolean;
+    ProductQuantityChange?: string;
+    ProductPriceChange?: string;
+    ProductNameChange?: string;
+    ShopNameChange?: string;
+    InventoryNameChange?: string;
     handleProductNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleProductQuantityChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleProductPriceChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleShopNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    handleInventoryNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleAlert: () => void;
-
-
 }
 
-const AddProductsComponents: React.FC<AddProductsProps> = ({ handleAlert, showAlert,ProductNameChange,ProductQuantityChange,ProductPriceChange,handleProductQuantityChange,handleProductPriceChange,handleProductNameChange }) => {
+const AddProductsComponents: React.FC<AddProductsProps> = ({ isLoading, handleAlert, showAlert,ProductNameChange,ProductQuantityChange,ProductPriceChange,handleProductQuantityChange,handleProductPriceChange,handleProductNameChange, handleShopNameChange, ShopNameChange, InventoryNameChange, handleInventoryNameChange }) => {
     return (
         <Box sx={wholeConProducts}>
             <Box sx={headerProducts}>
                 <h2>{Messages.PRODUCTS_PAGE_HEADER}</h2>
             </Box>
             <Box sx={container}>
-                <Box sx={bodyProducts}>
-                    <Box sx={body1}><label>{Messages.SHOP_NAME_LABEL}</label></Box>
-                    <Box sx={body2}><input style={inputStyleShopsInven} placeholder="SHOP NAME" type='text'></input></Box><br />
-                </Box>
-                <Box sx={bodyProducts}>
-                    <Box sx={body1}><label>{Messages.INVENTORY_NAME_LABEL}</label></Box>
-                    <Box sx={body2}><input style={inputStyleShopsInven} placeholder="INVENTORY NAME" type='text'></input></Box><br /><br /><br /><br />
-                </Box>
-                <Box sx={bodyProducts}>
-                    <Box sx={body1}>{Messages.PRODUCT_DETAILS_LABEL}</Box>
-                </Box>
-                <Box sx={productDetails}>
-                    <Box sx={ProductDetailsPart}>
-                        <Box sx={productDetails1}><label>{Messages.NAME_OF_PRODUCT}</label></Box>
-                        <Box sx={productDetails2}><input style={inputStyle} placeholder="COUNTRY" type='text' value = {ProductNameChange} onChange={handleProductNameChange}></input></Box><br /><br />
-                    </Box >
-                    <Box sx={ProductDetailsPart}>
-                        <Box sx={productDetails1}><label>{Messages.QUANTITY_OF_PRODUCT}</label></Box>
-                        <Box sx={productDetails2}><input style={inputStyle} placeholder="STATE" type='text' value = {ProductQuantityChange} onChange={handleProductQuantityChange}></input></Box><br /><br />
-                    </Box>
-                    <Box sx={ProductDetailsPart}>
-                        <Box sx={productDetails1}><label>{Messages.PRICE_OF_PRODUCT}</label></Box>
-                        <Box sx={productDetails2}><input style={inputStyle} placeholder="CITY" type='text' value = {ProductPriceChange} onChange={handleProductPriceChange}></input></Box><br /><br />
-                    </Box>
-                </Box>
-                <Box sx={submitButton}><Button onClick={handleAlert} variant="contained">{Messages.ADD_PRODUCT}</Button></Box>
-                {showAlert &&
-                    <Box>
-                        <Alert sx={alertStyle}>
-                            {Messages.PRODUCT_ADDED_SUCCESSFULLY}
-                        </Alert>
-                    </Box>
-                }
+                    <Box sx={body2}><TextField style={inputStyleShopsInven} label={Messages.SHOP_NAME} value={ShopNameChange} onChange = {handleShopNameChange}/></Box><br /><br />
+                    <Box sx={body2}><TextField style={inputStyleShopsInven} label={Messages.INVENTORY_NAME} value={InventoryNameChange} onChange = {handleInventoryNameChange}/></Box><br /><br />
+                    <Box sx={body2}><TextField style={inputStyleShopsInven} label={Messages.PRODUCT_NAME} value={ProductNameChange} onChange = {handleProductNameChange} /></Box><br /><br />
+                    <Box sx={body2}><TextField style={inputStyleShopsInven} label={Messages.PRODUCT_QUANTITY} value={ProductQuantityChange} onChange = {handleProductQuantityChange} /></Box><br /><br />
+                    <Box sx={body2}><TextField style={inputStyleShopsInven} label={Messages.PRODUCT_PRICE} value={ProductPriceChange} onChange = {handleProductPriceChange} /></Box><br /><br />
+                    {!isLoading ? <Box sx={submitButton}><Button onClick={handleAlert} variant="contained">{Messages.ADD_PRODUCT}</Button></Box> : <Box sx={submitButton}><CircularProgress /></Box>}
+
+                    {showAlert &&
+                        <Box>
+                            <Alert sx={alertStyle}>
+                                {Messages.PRODUCT_ADDED_SUCCESSFULLY}
+                            </Alert>
+                        </Box>
+                    }
             </Box>
         </Box>
     )

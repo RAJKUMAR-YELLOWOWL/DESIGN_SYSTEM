@@ -1,18 +1,17 @@
-export type shopsPage = {
-    hasError : Boolean;
-    isLoading : Boolean;
+export type ShopsPage = {
+    hasError : boolean;
+    isLoading : boolean;
     shopName : dropDown;
-    shopsList : dropDown[];
-    onChangeShop : (shop: dropDown[]) => void;
+    shopsList : dropDown;
+    onChangeShop : (shop: dropDown) => void;
     onSubmitClick : () => void;
 }
 
 export type dropDown = {
     options : option[];
-    selectedValue : string;
 }
 
 export type option = {
-    id : String;
+    id : string;
     label : string;
 }

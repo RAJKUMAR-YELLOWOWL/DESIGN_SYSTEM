@@ -1,17 +1,17 @@
 import React from 'react'
 import { productsPageMockData } from '../MockData/ProductsPage';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import AddProductsComponents from '../Components/AddProducts';
 
 const AddProducts=()=> {
 
-
-    const navigation = useNavigate();
     const [showAlert, setShowAlert] = useState(false)
     const [ProductNameChange, setProductNameChange] = useState('')
     const [ProductQuantityChange, setProductQuantityChange] = useState('')
     const [ProductPriceChange, setProductPriceChange] = useState('')
+    const [ShopNameChange, setShopNameChange] = useState('')
+    const [InventoryNameChange, setInventoryNameChange] = useState('')
+
 
     const handleAlert = () => {
         setShowAlert(true);
@@ -29,6 +29,12 @@ const AddProducts=()=> {
     const handleProductPriceChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
       setProductPriceChange(event.target.value)
     }
+    const handleShopNameChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
+      setShopNameChange(event.target.value)
+    }
+    const handleInventoryNameChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
+      setInventoryNameChange(event.target.value)
+    }
   
 
   return (
@@ -39,9 +45,13 @@ const AddProducts=()=> {
     ProductNameChange = {ProductNameChange}
     ProductQuantityChange = {ProductQuantityChange}
     ProductPriceChange = {ProductPriceChange}
+    ShopNameChange = {ShopNameChange}
+    InventoryNameChange = {InventoryNameChange}
     handleProductNameChange = {handleProductNameChange}
     handleProductQuantityChange = {handleProductQuantityChange}
     handleProductPriceChange = {handleProductPriceChange}
+    handleShopNameChange = {handleShopNameChange}
+    handleInventoryNameChange = {handleProductNameChange}
     />
   )
 }
