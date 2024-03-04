@@ -69,19 +69,17 @@ const error: SxProps<Theme> = {
   justifyContent: 'center',
 }
 
-type ShopsPageProps = {
+export type ShopsPageProps = {
   hasError: boolean;
   isLoading: boolean;
-  shopsList: dropDown;
+  shopsList: option[];
   shopNameChange?: string;
-  handleShopNameChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleShopNameChange: (event: any) => void;
   handleSubmit: () => void;
   handleAddShopsClick: () => void;
   handleAddInventoriesClick: () => void;
   handleAddProductsClick: () => void;
-}
-type dropDown = {
-  options: option[];
+  fetchingShops:() =>void
 }
 
 type option = {
@@ -89,7 +87,7 @@ type option = {
   label: string;
 }
 
-const ShopsPageComponent: React.FC<ShopsPageProps> = ({ handleSubmit, handleAddShopsClick, handleAddInventoriesClick, handleAddProductsClick, handleShopNameChange, shopNameChange, shopsList, isLoading, hasError }) => {
+const ShopsPageComponent: React.FC<ShopsPageProps> = ({ handleSubmit, handleAddShopsClick, handleAddInventoriesClick, handleAddProductsClick, handleShopNameChange,fetchingShops, shopNameChange, shopsList, isLoading, hasError }) => {
 
   return (
 
@@ -101,16 +99,17 @@ const ShopsPageComponent: React.FC<ShopsPageProps> = ({ handleSubmit, handleAddS
           <Box sx={button1}><Button onClick={handleAddProductsClick} variant="contained"> {Messages.PRODUCT_NAME} </Button></Box>
         </Box><Box sx={body}>
             <FormControl sx={{ width: 500 }}>
-              <InputLabel id="searchShop">SEARCH SHOP</InputLabel>
+              <InputLabel id="searchShop">{Messages.SEARCH_SHOP}</InputLabel>
               <Select
                 labelId='searchShop'
                 id='search'
+                placeholder='Select shop name'
                 value={shopNameChange}
-                onChange={() => handleShopNameChange}
+                onChange={(event) => handleShopNameChange(event)}
                 label="SEARCH SHOP"
                 sx={{ width: '100%' }}
               >
-                {shopsList.options.map((option) => (
+                {shopsList.map((option) => (
                   <MenuItem key={option.id}>
                     <span>{option.label}</span>
                   </MenuItem>
@@ -118,10 +117,9 @@ const ShopsPageComponent: React.FC<ShopsPageProps> = ({ handleSubmit, handleAddS
               </Select>
             </FormControl>
           </Box>
-
-          {!isLoading && <Box sx={searchButton}><Button onClick={handleSubmit} variant="contained">{Messages.SUBMIT}</Button></Box>}
+          {!isLoading && <Box sx={searchButton}><Button onClick={fetchingShops} variant="contained">{Messages.SUBMIT}</Button></Box>}
           {isLoading && <Box sx={searchButton}><Button onClick={handleSubmit} variant="contained">{Messages.LOADER}</Button></Box>}
-        </>) : (<Box sx={error}><label>Error 404 not found</label></Box>)}
+        </>) : (<Box sx={error}><label>{Messages.ERROR_MESSAGE}</label></Box>)}
     </Box>
   );
 }

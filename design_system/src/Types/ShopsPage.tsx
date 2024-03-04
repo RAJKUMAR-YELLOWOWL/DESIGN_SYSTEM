@@ -5,6 +5,7 @@ export type ShopsPage = {
     shopsList : dropDown;
     onChangeShop : (shop: dropDown) => void;
     onSubmitClick : () => void;
+    fetchingShops : () => void
 }
 
 export type dropDown = {
