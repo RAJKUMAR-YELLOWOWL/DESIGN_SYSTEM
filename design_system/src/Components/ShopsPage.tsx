@@ -1,7 +1,5 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
-import { useNavigate } from 'react-router-dom';
 import { FormControl, MenuItem, Select, InputLabel, SxProps, Theme, SelectChangeEvent } from '@mui/material';
 import { Button } from '@mui/material';
 import { shopsPageMockData } from '../MockData/ShopsPage';
@@ -79,7 +77,7 @@ export type ShopsPageProps = {
   handleAddShopsClick: () => void;
   handleAddInventoriesClick: () => void;
   handleAddProductsClick: () => void;
-  fetchingShops:() =>void
+  fetchingShops:() =>any;
 }
 
 type option = {

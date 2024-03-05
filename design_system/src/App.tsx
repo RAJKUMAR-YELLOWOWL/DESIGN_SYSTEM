@@ -6,26 +6,29 @@ import AddInventories from './Container/AddInventories';
 import AddProducts from './Container/AddProducts';
 import InventoryPage from './Container/InventoryPage';
 import ProductsPage from './Container/ProductsPage';
+import {BillingSystemContext} from './Context/BillingSystemContext'
+import { AxiosInstance } from 'axios';
+import  Axios from 'axios';
 
 const App = () => {
 
-  const apiUrl = process.env.API_BASE_URL
+  const AxiosInstance = Axios.create({baseURL : process.env.API_BASE_URL})
 
   return (
-    <Router>
-      <Routes>
-        {/* <apiUrl.provider value = {apiUrl}> */}
-          <Route path="/" element={<ShopsPage />}></Route>
-          <Route path="/AddShops" element={<AddShops />}></Route>
-          <Route path="/AddInventories" element={<AddInventories />}></Route>
-          <Route path="/AddProducts" element={<AddProducts />}></Route>
-          <Route path="/InventoryPage" element={<InventoryPage />}></Route>
-          <Route path="/ProductsPage" element={<ProductsPage />}></Route>
-        {/* </apiUrl.provider> */}
-      </Routes>
-    </Router>
-
+    <BillingSystemContext.Provider value={AxiosInstance}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<ShopsPage />} />
+          <Route path="/AddShops" element={<AddShops />} />
+          <Route path="/AddInventories" element={<AddInventories />} />
+          <Route path="/AddProducts" element={<AddProducts />} />
+          <Route path="/InventoryPage" element={<InventoryPage />} />
+          <Route path="/ProductsPage" element={<ProductsPage />} />
+        </Routes>4
+      </Router>
+    </BillingSystemContext.Provider>
   );
 }
 
 export default App;
+

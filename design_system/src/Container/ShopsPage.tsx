@@ -1,11 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import ShopsPageComponent from '../Components/ShopsPage';
-import { shopsPageMockData } from '../MockData/ShopsPage';
 import { useState } from 'react';
 import  Axios  from 'axios';
-import { API_BASE_URL } from './ip';
-
+import { BillingSystemContext } from '../Context/BillingSystemContext';
+import { useContext } from 'react';
 
 
 const ShopsPage = () => {
@@ -20,7 +19,7 @@ const ShopsPage = () => {
     navigate('/AddShops');
   };
 
-  const handleShopNameChange = (event: any) => {
+  const handleShopNameChange = (event: any) => {        
     setShopNameChange(event.target.value)
   }
 
@@ -32,20 +31,18 @@ const ShopsPage = () => {
     navigate('/AddProducts');
   };
 
-
-  console.log(shopNameChange)
-
-  const fetchingShops = () =>{
-    Axios.get('${BASE_URL_API}/allShops').then(
-      response => {
-        console.log("Data : ", response.data);
-      }
-    ) 
-    .catch(error =>{
-      console.error("Error : ",error);
-    })
+const axiosInstance = useContext(BillingSystemContext)
+const fetchingShops = async () =>{
+  console.log('hi bro')
+  try{
+    const response = await axiosInstance?.get('/allShops');
   }
-
+  catch(error)
+  {
+    console.error("Error : ",error);
+  }
+}
+  
   return (
     <ShopsPageComponent
       handleSubmit={handleSubmit}
