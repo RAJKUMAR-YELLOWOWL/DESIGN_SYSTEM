@@ -12,7 +12,7 @@ import  Axios from 'axios';
 
 const App = () => {
 
-  const AxiosInstance = Axios.create({baseURL : process.env.API_BASE_URL})
+  const AxiosInstance = Axios.create({baseURL : process.env.API_BASE_URL!})
 
   return (
     <BillingSystemContext.Provider value={AxiosInstance}>

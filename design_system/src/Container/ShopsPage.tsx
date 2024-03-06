@@ -2,15 +2,16 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import ShopsPageComponent from '../Components/ShopsPage';
 import { useState } from 'react';
-import  Axios  from 'axios';
 import { BillingSystemContext } from '../Context/BillingSystemContext';
 import { useContext } from 'react';
+import axios, { AxiosInstance } from 'axios';
 
 
 const ShopsPage = () => {
 
   const [shopNameChange, setShopNameChange] = useState<string>('');
   const [hasError, setHasError] = useState<boolean>(false)
+  const [shopsData, setShopsData] = useState([])
   const navigate = useNavigate();
   const handleSubmit = () => {
     navigate('/InventoryPage')
@@ -31,11 +32,14 @@ const ShopsPage = () => {
     navigate('/AddProducts');
   };
 
-const axiosInstance = useContext(BillingSystemContext)
+
+const axiosInstance = useContext(BillingSystemContext) as AxiosInstance
 const fetchingShops = async () =>{
   console.log('hi bro')
   try{
-    const response = await axiosInstance?.get('/allShops');
+    const response = await axios.get('http://192.168.0.105:3001/allShops')
+    console.log(response.data.data)
+    setShopsData(response.data.data)
   }
   catch(error)
   {
@@ -54,9 +58,11 @@ const fetchingShops = async () =>{
       hasError={hasError}
       isLoading={false}
       shopsList={[]}
-      fetchingShops = {fetchingShops} />
+      fetchingShops = {fetchingShops} 
+      shopsData = {shopsData}/>
   )
 }
 
 export default ShopsPage
 
+    // await axiosInstance.get('/allShops');

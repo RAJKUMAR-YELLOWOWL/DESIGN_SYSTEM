@@ -79,10 +79,23 @@ type AddShopsProps = {
     handleShopCityChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleShopStateChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     onSubmitClick: () => void;
-    handleNavigation: () => void;      
+    handleNavigation: () => void;  
+    AddingShops: () => void;    
 }
 
-const AddShopsComponents:React.FC<AddShopsProps> = ({isLoading, handleNavigation,shopCountryChange, shopStateChange,shopCityChange, showAlert, handleShopNameChange, handleShopCountryChange, handleShopStateChange,handleShopCityChange, shopNameChange}) => {
+const AddShopsComponents:React.FC<AddShopsProps> = ({isLoading, 
+    AddingShops,
+    handleNavigation,
+    shopCountryChange, 
+    shopStateChange,
+    shopCityChange, 
+    showAlert, 
+    handleShopNameChange, 
+    handleShopCountryChange, 
+    handleShopStateChange,
+    handleShopCityChange, 
+    shopNameChange
+}) => {
 
     return (
         <Box sx={wholeConShops}>
@@ -94,7 +107,7 @@ const AddShopsComponents:React.FC<AddShopsProps> = ({isLoading, handleNavigation
                 <Box sx={body2}><TextField style={inputStyleShops} label={Messages.COUNTRY} value={shopCountryChange} onChange = {handleShopCountryChange} /></Box><br /><br />
                 <Box sx={body2}><TextField style={inputStyleShops} label={Messages.STATE} value={shopStateChange} onChange = {handleShopStateChange} /></Box><br /><br />
                 <Box sx={body2}><TextField style={inputStyleShops} label={Messages.CITY} value={shopCityChange} onChange = {handleShopCityChange} /></Box><br /><br />
-                {!isLoading ? <Box sx={submitButton}><Button onClick={handleNavigation} variant="contained">{Messages.SHOPS_PAGE_HEADER}</Button></Box> : isLoading && <Box sx={submitButton}><CircularProgress /></Box>}                
+                {!isLoading ? <Box sx={submitButton}><Button onClick={AddingShops} variant="contained">{Messages.SHOPS_PAGE_HEADER}</Button></Box> : isLoading && <Box sx={submitButton}><CircularProgress /></Box>}                
                 {showAlert &&
                 <Box sx={alertStyle}>
                     <Alert>

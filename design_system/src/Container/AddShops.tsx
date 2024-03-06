@@ -3,6 +3,7 @@ import AddShopsComponents from '../Components/AddShops'
 import { shopsPageMockData } from '../MockData/ShopsPage'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Axios from 'axios';
 
 
 const AddShops = () => {
@@ -37,9 +38,34 @@ const AddShops = () => {
   }
 
 
+  const AddingShops = () => {
+  //   Axios.post('http://192.168.0.105:3001/addShops', {
+  //     shopNameChange: shopNameChange,
+  //     shopCountryChange: shopCountryChange,
+  //     shopStateChange: shopStateChange,
+  //     shopCityChange: shopCityChange
+  //   })
+  //     .then((response) => {
+  //       console.log("shops Added Successfully", response)
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error", error)
+  //     })
+  // }
 
-
-
+  Axios.post('http://192.168.0.105:3001/addShops', {
+  shopNameChange: shopNameChange,
+  shopCountryChange: shopCountryChange,
+  shopStateChange: shopStateChange,
+  shopCityChange: shopCityChange
+})
+.then((response) => {
+  console.log("shops Added Successfully", response)
+})
+.catch((error) => {
+  console.error("Error", error)
+})
+  }
   return (
     <AddShopsComponents
       {...shopsPageMockData}
@@ -53,7 +79,8 @@ const AddShops = () => {
       shopStateChange={shopStateChange}
       shopCityChange={shopCityChange}
       shopCountryChange={shopCountryChange}
-      onSubmitClick={handleNavigation} />
+      onSubmitClick={handleNavigation}
+      AddingShops={AddingShops} />
   )
 }
 

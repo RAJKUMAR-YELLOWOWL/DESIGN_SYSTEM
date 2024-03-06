@@ -71,6 +71,7 @@ export type ShopsPageProps = {
   hasError: boolean;
   isLoading: boolean;
   shopsList: option[];
+  shopsData:any[];
   shopNameChange?: string;
   handleShopNameChange: (event: any) => void;
   handleSubmit: () => void;
@@ -85,7 +86,18 @@ type option = {
   label: string;
 }
 
-const ShopsPageComponent: React.FC<ShopsPageProps> = ({ handleSubmit, handleAddShopsClick, handleAddInventoriesClick, handleAddProductsClick, handleShopNameChange,fetchingShops, shopNameChange, shopsList, isLoading, hasError }) => {
+const ShopsPageComponent: React.FC<ShopsPageProps> = ({ handleSubmit, 
+  handleAddShopsClick, 
+  handleAddInventoriesClick, 
+  handleAddProductsClick, 
+  handleShopNameChange,
+  fetchingShops, 
+  shopNameChange, 
+  shopsList, 
+  isLoading, 
+  hasError,
+  shopsData
+}) => {
 
   return (
 
@@ -107,9 +119,14 @@ const ShopsPageComponent: React.FC<ShopsPageProps> = ({ handleSubmit, handleAddS
                 label="SEARCH SHOP"
                 sx={{ width: '100%' }}
               >
-                {shopsList.map((option) => (
+                {/* {shopsList.map((option) => (
                   <MenuItem key={option.id}>
                     <span>{option.label}</span>
+                  </MenuItem>
+                ))} */}
+                {shopsData.map((shops) => (
+                  <MenuItem key = {shops.shopId}>
+                     <span> {shops.shopName} </span>
                   </MenuItem>
                 ))}
               </Select>

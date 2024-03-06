@@ -17,6 +17,7 @@ export const shopsPageMockData: ShopsPageProps = {
   handleAddInventoriesClick: () => { },
   handleAddProductsClick: () => { },
   fetchingShops: () => { },
+  shopsData:[]
 };
 
 // export const shopsPageMockDataHasError: ShopsPage = {
